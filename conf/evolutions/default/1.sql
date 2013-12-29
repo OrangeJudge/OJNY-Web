@@ -15,6 +15,7 @@ create table member (
   username                  varchar(255),
   email                     varchar(255),
   password                  varchar(255),
+  gender                    tinyint(1) default 0,
   created_date              datetime,
   constraint pk_member primary key (id))
 ;

@@ -13,6 +13,8 @@ public class Member extends Model {
     public String username;
     public String email;
     public String password; // need hash
+    
+    public boolean gender; // female is true.
 
     public Date createdDate;
 }
