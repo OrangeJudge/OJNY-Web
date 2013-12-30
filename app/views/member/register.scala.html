@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Register</title>
+
+    <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/stylesheets/login-register.css" rel="stylesheet">
 </head>
 <body>
-<h1>Register</h1>
-<form target="/member/register" method="post">
-    username: <input name="username"> <br />
-    email:    <input name="email"> <br />
-    password: <input name="password"> <br />
-    gender:
-    <select name="gender">
-        <option value="1">Female</option>
-        <option value="0">Male</option>
-    </select> <br />
-    <input value="Register" type="submit">
-</form>
+<div class="container">
+    <h1><a href="/" class="logo">OJNY</a></h1>
+    <form class="form-member">
+        <input name="username" placeholder="Username" class="form-control first" required autofocus>
+        <input name="email" placeholder="Email" class="form-control" required>
+        <select name="gender" class="form-control">
+            <option disabled selected>Gender</option>
+            <option value="1">Female</option>
+            <option value="0">Male</option>
+        </select>
+        <input id="password" name="password" placeholder="Password" class="form-control" type="password" required>
+        <input id="password-confirm" placeholder="Confirm password" class="form-control last" type="password" required>
+        <label class="checkbox">
+            <input type="checkbox" value="" checked readonly> Agree our <a href="#">terms and conditions</a>
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <p class="link"><a href="/member/login">I am a member.</a></p>
+    </form>
+</div>
 </body>
 </html>

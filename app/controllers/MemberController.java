@@ -29,4 +29,24 @@ public class MemberController extends Controller {
         }
         return ok(out);
     }
+
+    public static Result login() {
+        ObjectNode out = Json.newObject();
+        DynamicForm in = Form.form().bindFromRequest();
+        try {
+            Member member = Member.find.where("username = '" + in.get("username") + "'").findUnique();
+            if (member == null) {
+                throw new OJException(1003, "username not registered");
+            }
+            if (!member.verifyPassword(in.get("password"))) {
+                throw new OJException(1004, "password incorrect");
+            }
+            out.put("error", 0);
+            out.put("message", "logged in success");
+        } catch (OJException e) {
+            out.put("error", e.getCode());
+            out.put("message", e.getMessage());
+        }
+        return ok(out);
+    }
 }

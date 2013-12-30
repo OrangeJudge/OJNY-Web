@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/stylesheets/messenger.css" rel="stylesheet">
+    <link href="/assets/stylesheets/messenger-theme-flat.css" rel="stylesheet">
+    <link href="/assets/stylesheets/login-register.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1><a href="/" class="logo">OJNY</a></h1>
+    <form id="login-form" class="form-member">
+        <input name="username" placeholder="Username or email" class="form-control first" required autofocus>
+        <input id="password" name="password" placeholder="Password" class="form-control last" type="password" required>
+        <label class="checkbox">
+            <input type="checkbox" value="" checked> remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <p class="link"><a href="/member/register">I am not a member yet.</a></p>
+    </form>
+</div>
+<script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+<script src="/assets/javascripts/messenger.min.js"></script>
+<script src="/assets/javascripts/messenger-theme-flat.js"></script>
+<script src="/assets/javascripts/login-register.js"></script>
+</body>
+</html>

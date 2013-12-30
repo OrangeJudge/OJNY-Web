@@ -44,4 +44,8 @@ public class Member extends Model {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean verifyPassword(String password) {
+        return this.password.equals(password);
+    }
 }

@@ -10,5 +10,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Member
 GET     /member/register            controllers.StaticController.register()
+GET     /member/login               controllers.StaticController.login()
 
 POST    /member/register            controllers.MemberController.register()
+POST    /member/login               controllers.MemberController.login()

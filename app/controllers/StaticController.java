@@ -14,4 +14,8 @@ public class StaticController extends Controller {
         return ok(views.html.member.register.render());
     }
 
+    public static Result login() {
+        return ok(views.html.member.login.render());
+    }
+
 }
