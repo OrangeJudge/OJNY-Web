@@ -8,16 +8,18 @@
     <title>Register</title>
 
     <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/stylesheets/messenger.css" rel="stylesheet">
+    <link href="/assets/stylesheets/messenger-theme-flat.css" rel="stylesheet">
     <link href="/assets/stylesheets/login-register.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1><a href="/" class="logo">OJNY</a></h1>
-    <form class="form-member">
+    <form id="register-form" class="form-member">
         <input name="username" placeholder="Username" class="form-control first" required autofocus>
-        <input name="email" placeholder="Email" class="form-control" required>
-        <select name="gender" class="form-control">
-            <option disabled selected>Gender</option>
+        <input name="email" placeholder="Email" class="form-control" type="email" required>
+        <select id="gender" name="gender" class="form-control" required>
+            <option value="-1" disabled selected>Gender</option>
             <option value="1">Female</option>
             <option value="0">Male</option>
         </select>
@@ -30,5 +32,9 @@
         <p class="link"><a href="/member/login">I am a member.</a></p>
     </form>
 </div>
+<script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+<script src="/assets/javascripts/messenger.min.js"></script>
+<script src="/assets/javascripts/messenger-theme-flat.js"></script>
+<script src="/assets/javascripts/login-register.js"></script
 </body>
 </html>

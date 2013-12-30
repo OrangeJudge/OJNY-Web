@@ -17,9 +17,13 @@ public class MemberController extends Controller {
         try {
             Member member = new Member();
             member.setUsername(username);
-            member.setEmail(in.get("email"));
-            member.setPassword(in.get("password"));
-            member.gender = in.get("gender").equals("1");
+            try {
+                member.setEmail(in.get("email"));
+                member.setPassword(in.get("password"));
+                member.gender = in.get("gender").equals("1");
+            } catch (NullPointerException ne) {
+                throw new OJException(1005, "information ,not complete.");
+            }
             member.save();
             out.put("error", 0);
             out.put("message", "member is registered.");
