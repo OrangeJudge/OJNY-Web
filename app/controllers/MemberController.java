@@ -45,11 +45,37 @@ public class MemberController extends Controller {
             if (!member.verifyPassword(in.get("password"))) {
                 throw new OJException(1004, "password incorrect");
             }
+            session("connected", "" + member.id);
             out.put("error", 0);
             out.put("message", "logged in success");
         } catch (OJException e) {
             out.put("error", e.getCode());
             out.put("message", e.getMessage());
+        }
+        return ok(out);
+    }
+
+    public static Result logout() {
+        session().remove("connected");
+        return ok("ok");
+    }
+
+    public static Result status() {
+        ObjectNode out = Json.newObject();
+        String strid = session("connected");
+        if (strid == null) {
+            out.put("error", 0);
+            out.put("login", false);
+        } else {
+            Member member = Member.find.byId(Integer.parseInt(strid));
+            if (member == null) {
+                out.put("error", 1);
+                out.put("message", "logged in user not found.");
+            } else {
+                out.put("error", 0);
+                out.put("login", true);
+                out.put("member", Json.toJson(member));
+            }
         }
         return ok(out);
     }
