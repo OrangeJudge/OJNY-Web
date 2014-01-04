@@ -16,3 +16,7 @@ POST    /member/register            controllers.MemberController.register()
 POST    /member/login               controllers.MemberController.login()
 POST    /member/logout              controllers.MemberController.logout()
 GET     /member/status              controllers.MemberController.status()
+
+# Admin
+GET     /admin/login                controllers.AdminController.loginPage()
+POST    /admin/login                controllers.AdminController.login()

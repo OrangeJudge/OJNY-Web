@@ -48,4 +48,12 @@ public class Member extends Model {
     public boolean verifyPassword(String password) {
         return this.password.equals(password);
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
