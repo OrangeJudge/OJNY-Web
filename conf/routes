@@ -20,3 +20,5 @@ GET     /member/status              controllers.MemberController.status()
 # Admin
 GET     /admin/login                controllers.AdminController.loginPage()
 POST    /admin/login                controllers.AdminController.login()
+
+GET     /admin                      controllers.AdminController.dashboardPage()

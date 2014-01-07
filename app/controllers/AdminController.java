@@ -8,6 +8,10 @@ public class AdminController extends Controller {
         return ok(views.html.admin.login.render());
     }
 
+    public static Result dashboardPage() {
+        return ok(views.html.admin.dashboard.render());
+    }
+
     public static Result login() {
         return redirect("/admin");
     }
