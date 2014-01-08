@@ -15,4 +15,12 @@ public class AdminController extends Controller {
     public static Result login() {
         return redirect("/admin");
     }
+
+    public static Result problemsPage() {
+        return ok(views.html.admin.problems.render());
+    }
+
+    public static Result addProblemPage() {
+        return ok(views.html.admin.addProblem.render());
+    }
 }

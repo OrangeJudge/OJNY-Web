@@ -29,4 +29,7 @@ public class Problem extends Model {
     @ManyToOne
     public Member author;
     public int status; // 0 normal; 1 view only; 2 deleted;
+
+    public double difficulty;
+    public int vote;
 }

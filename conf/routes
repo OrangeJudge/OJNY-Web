@@ -22,3 +22,5 @@ GET     /admin/login                controllers.AdminController.loginPage()
 POST    /admin/login                controllers.AdminController.login()
 
 GET     /admin                      controllers.AdminController.dashboardPage()
+GET     /admin/problems             controllers.AdminController.problemsPage()
+GET     /admin/problem/add          controllers.AdminController.addProblemPage()
