@@ -21,7 +21,6 @@ public class Problem extends Model {
     public int timeLimit; // in ns. 0 for not specified.
     public int memoryLimit; // in MB. 0 for not specified.
     public boolean specialJudge;
-    public String specialJudgeCommand;
 
     public Date createdDate;
     public Date lastModifiedDate;
@@ -32,4 +31,12 @@ public class Problem extends Model {
 
     public double difficulty;
     public int vote;
+
+    public void updateCreatedDate() {
+        createdDate = new Date();
+    }
+
+    public void updateLastModifiedDate() {
+        lastModifiedDate = new Date();
+    }
 }

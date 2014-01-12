@@ -29,7 +29,6 @@ create table problem (
   time_limit                integer,
   memory_limit              integer,
   special_judge             tinyint(1) default 0,
-  special_judge_command     varchar(255),
   created_date              datetime,
   last_modified_date        datetime,
   time_stamp                bigint,
