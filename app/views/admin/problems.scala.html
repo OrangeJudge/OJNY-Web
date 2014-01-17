@@ -1,3 +1,19 @@
+@(problems: List[Problem])
+
 @adminLayout("Problems", 0, Seq(), Seq()){
 <h1>Problems</h1>
+
+<a href="/admin/problem/add" class="btn btn-default">Add Problem</a>
+
+<ul id="problem-list">
+    @for(problem <- problems) {
+    <li>
+        @problem.title
+        <a href="/admin/problem/@problem.id">Edit</a>
+    </li>
+    }
+</ul>
+
+
+
 }

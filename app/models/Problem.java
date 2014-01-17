@@ -32,6 +32,10 @@ public class Problem extends Model {
     public double difficulty;
     public int vote;
 
+    public static Finder<Integer, Problem> find = new Finder<Integer, Problem>(
+            Integer.class, Problem.class
+    );
+
     public void updateCreatedDate() {
         createdDate = new Date();
     }

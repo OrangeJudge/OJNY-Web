@@ -1,3 +1,11 @@
 $("#problem-info").submit ->
-  console.log $("#problem-info").serialize()
+  postData = $("#problem-info").serialize()
+  $.ajax
+    url: "/admin/problem/add"
+    data: postData
+    type: "post"
+    dataType: "json"
+    success: (ret) ->
+      console.log ret
+
   return false

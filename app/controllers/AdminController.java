@@ -9,6 +9,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import utils.OJException;
 
+import java.util.List;
+
 public class AdminController extends Controller {
     public static Result loginPage() {
         return ok(views.html.admin.login.render());
@@ -19,11 +21,15 @@ public class AdminController extends Controller {
     }
 
     public static Result login() {
-        return redirect("/admin");
+        ObjectNode out = Json.newObject();
+        session("admin", "true");
+        out.put("error", 0);
+        return ok(out);
     }
 
     public static Result problemsPage() {
-        return ok(views.html.admin.problems.render());
+        List<Problem> problems = Problem.find.all();
+        return ok(views.html.admin.problems.render(problems));
     }
 
     public static Result addProblemPage() {
@@ -57,5 +63,10 @@ public class AdminController extends Controller {
             out.put("message", e.getMessage());
         }
         return ok(out);
+    }
+
+    public static Result logoutRedirect() {
+        session().remove("admin");
+        return redirect("/admin/login");
     }
 }
