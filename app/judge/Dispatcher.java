@@ -1,6 +1,12 @@
 package judge;
 
+import models.Submit;
+
 public class Dispatcher implements Runnable {
+    private Submit submit;
+    public Dispatcher(Submit submit) {
+        this.submit = submit;
+    }
     @Override
     public void run() {
         synchronized (Dispatcher.class) {
