@@ -14,12 +14,13 @@ GET     /member/login               controllers.MemberController.loginPage()
 
 POST    /member/register            controllers.MemberController.register()
 POST    /member/login               controllers.MemberController.login()
-POST    /member/logout              controllers.MemberController.logout()
+GET     /member/logout              controllers.MemberController.logout()
 GET     /member/status              controllers.MemberController.status()
 
 # Problem
 GET     /problems                   controllers.ProblemController.problemsPage()
 GET     /problem/:id                controllers.ProblemController.problemPage(id: Int)
+POST    /submit                     controllers.ProblemController.submit()
 
 # Admin
 GET     /admin/login                controllers.AdminController.loginPage()
