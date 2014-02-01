@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import judge.Judge;
 import models.Problem;
 import models.Submit;
 import play.data.DynamicForm;
@@ -35,7 +36,11 @@ public class ProblemController extends Controller {
                 int problemId = Integer.parseInt(in.get("problemId"));
                 Submit submit = new Submit();
                 submit.setProblem(problemId);
-
+                submit.setMember(Integer.parseInt(session("uid")));
+                submit.language = Integer.parseInt(in.get("language"));
+                submit.source = in.get("source");
+                submit.save();
+                Judge.submit(submit);
                 out.put("error", 0);
             } catch (NullPointerException npe) {
                 throw new OJException(1, "Null Pointer Exception");
