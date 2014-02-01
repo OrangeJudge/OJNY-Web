@@ -36,6 +36,9 @@ public class Submit extends Model {
     public Submit() {
         createTime = new Date();
     }
+    public static Finder<Integer, Submit> find = new Finder<Integer, Submit>(
+            Integer.class, Submit.class
+    );
 
     public void setMember(int memberId) throws OJException {
         Member member = Member.find.byId(memberId);

@@ -22,6 +22,9 @@ GET     /problems                   controllers.ProblemController.problemsPage()
 GET     /problem/:id                controllers.ProblemController.problemPage(id: Int)
 POST    /submit                     controllers.ProblemController.submit()
 
+# Judger API
+POST    /judger/updateSubmit        controllers.JudgerController.updateSubmit()
+
 # Admin
 GET     /admin/login                controllers.AdminController.loginPage()
 POST    /admin/login                controllers.AdminController.login()

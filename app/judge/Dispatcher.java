@@ -16,13 +16,14 @@ public class Dispatcher implements Runnable {
         System.out.println("start judge");
         JsonNode postData = Json.toJson(submit);
         System.out.println(postData);
-        F.Promise<Integer> result = WS.url("http://localhost:1314/submit").post(postData).map(
+        F.Promise<Integer> promiseOfError = WS.url("http://localhost:1314/submit").post(postData).map(
             new F.Function<WS.Response, Integer>() {
                 public Integer apply(WS.Response response) {
-                    System.out.println("Error:" + response.asJson().findPath("error"));
                     return response.asJson().findPath("error").asInt();
                 }
             });
+        Integer error = promiseOfError.get();
+        System.out.println("Error:" + error);
         System.out.println("stop judge");
     }
 }
