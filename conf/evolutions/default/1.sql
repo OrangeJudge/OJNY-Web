@@ -55,6 +55,7 @@ create table problem_discussion (
   member_id                 integer,
   content                   longtext,
   created_date              datetime,
+  contain_solution          tinyint(1) default 0,
   constraint pk_problem_discussion primary key (id))
 ;
 

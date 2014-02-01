@@ -27,6 +27,11 @@ public class AdminController extends Controller {
         return ok(out);
     }
 
+    public static Result logoutRedirect() {
+        session().remove("admin");
+        return redirect("/admin/login");
+    }
+
     public static Result problemsPage() {
         List<Problem> problems = Problem.find.all();
         return ok(views.html.admin.problems.render(problems));
@@ -65,8 +70,18 @@ public class AdminController extends Controller {
         return ok(out);
     }
 
-    public static Result logoutRedirect() {
-        session().remove("admin");
-        return redirect("/admin/login");
+    public static Result editProblemPage(int problemId) {
+        Problem problem = Problem.find.byId(problemId);
+        if (problem == null) {
+            return ok("Problem not found");
+        }
+        return ok(views.html.admin.editProblem.render(problem));
     }
+
+    public static Result editProblem(int problemId) {
+        ObjectNode out = Json.newObject();
+        out.put("error", 0);
+        return ok(out);
+    }
+
 }

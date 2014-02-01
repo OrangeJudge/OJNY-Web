@@ -1,0 +1,38 @@
+@(problem: Problem)
+@adminLayout("Edit Problem", "problems", Seq("/assets/javascripts/admin/editProblem.min.js"), Seq()){
+<h2>Edit Problem</h2>
+
+<form id="problem-info" role="form">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name="title" id="title" value="@problem.title">
+    </div>
+    <div class="form-group">
+        <label>Tags</label>
+        <input type="text" class="form-control" name="tags" id="tags" value="@problem.tags">
+    </div>
+    <div class="form-group">
+        <label>Source</label>
+        <input type="text" class="form-control" name="source" id="source" value="@problem.source">
+    </div>
+    <div class="form-group">
+        <label>Time Limit (in ns)</label>
+        <input type="text" class="form-control" name="timeLimit" id="timeLimit" value="@problem.timeLimit">
+    </div>
+    <div class="form-group">
+        <label>Memory Limit (in MB)</label>
+        <input type="text" class="form-control" name="memoryLimit" id="memoryLimit" value="@problem.memoryLimit">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="specialJudge" @if(problem.specialJudge) {checked}> Special Judge
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="description" id="description">@problem.description</textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+}

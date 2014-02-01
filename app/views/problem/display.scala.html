@@ -1,0 +1,35 @@
+@(problem: Problem)
+@layout("Problem: " + problem.title, "problems", Seq("/assets/javascripts/submit.min.js"), Seq()){
+<h2>@problem.title</h2>
+
+<div id="basic-info">
+    <p>Time limit: @problem.timeLimit MS</p>
+    <p>Memory limit: @problem.memoryLimit MB</p>
+</div>
+<div id="description">
+    @problem.description
+</div>
+
+<div id="submit">
+    <h4>Submit</h4>
+    <form id="submit-form">
+        <input type="hidden" value="@problem.id" name="id">
+        <div id="language-select-div">
+            <p>
+                Language:
+                <select id="language" name="language">
+                    <option value="0">C</option>
+                    <option value="1">C++</option>
+                    <option value="2">Java</option>
+                </select>
+            </p>
+            <p>
+                <textarea id="source" name="source"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </div>
+    </form>
+</div>
+}

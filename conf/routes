@@ -3,19 +3,23 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.StaticController.index()
+GET     /                           controllers.PortalController.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Member
-GET     /member/register            controllers.StaticController.register()
-GET     /member/login               controllers.StaticController.login()
+GET     /member/register            controllers.MemberController.registerPage()
+GET     /member/login               controllers.MemberController.loginPage()
 
 POST    /member/register            controllers.MemberController.register()
 POST    /member/login               controllers.MemberController.login()
 POST    /member/logout              controllers.MemberController.logout()
 GET     /member/status              controllers.MemberController.status()
+
+# Problem
+GET     /problems                   controllers.ProblemController.problemsPage()
+GET     /problem/:id                controllers.ProblemController.problemPage(id: Int)
 
 # Admin
 GET     /admin/login                controllers.AdminController.loginPage()
@@ -26,3 +30,5 @@ GET     /admin                      controllers.AdminController.dashboardPage()
 GET     /admin/problems             controllers.AdminController.problemsPage()
 GET     /admin/problem/add          controllers.AdminController.addProblemPage()
 POST    /admin/problem/add          controllers.AdminController.addProblem()
+GET     /admin/problem/:id          controllers.AdminController.editProblemPage(id: Int)
+POST    /admin/problem/:id/edit     controllers.AdminController.editProblem(id: Int)

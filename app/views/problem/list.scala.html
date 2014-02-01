@@ -1,0 +1,12 @@
+@(problems: List[Problem])
+
+@layout("Problems", "problems", Seq(), Seq()){
+<h2>Problems</h2>
+<ul id="problem-list">
+    @for(problem <- problems) {
+    <li>
+        <a href="/problem/@problem.id">@problem.title</a>
+    </li>
+    }
+</ul>
+}

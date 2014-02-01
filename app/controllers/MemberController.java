@@ -10,6 +10,14 @@ import play.mvc.Result;
 import utils.OJException;
 
 public class MemberController extends Controller {
+    public static Result registerPage() {
+        return ok(views.html.member.register.render());
+    }
+
+    public static Result loginPage() {
+        return ok(views.html.member.login.render());
+    }
+
     public static Result register() {
         ObjectNode out = Json.newObject();
         DynamicForm in = Form.form().bindFromRequest();

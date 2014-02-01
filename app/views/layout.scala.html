@@ -1,4 +1,4 @@
-@(title: String = "", topNavActive: Integer = 0, js: Seq[String] = Seq(), css: Seq[String] = Seq())(content: Html)
+@(title: String = "", topNavActive: String, js: Seq[String] = Seq(), css: Seq[String] = Seq())(content: Html)
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +25,10 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Problems</a></li>
-            <li><a href="#">Contests</a></li>
-            <li><a href="/member/login">Log in</a></li>
+            <li @if(topNavActive=="home"){class="active"}><a href="/">Home</a></li>
+            <li @if(topNavActive=="problems"){class="active"}><a href="/problems">Problems</a></li>
+            <li @if(topNavActive=="contests"){class="active"}><a href="/contests">Contests</a></li>
+            <li @if(topNavActive=="member"){class="active"}><a href="/member/login">Log in</a></li>
         </ul>
         <h3 class="text-muted">OJNY</h3>
     </div>

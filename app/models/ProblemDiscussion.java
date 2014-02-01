@@ -19,4 +19,5 @@ public class ProblemDiscussion extends Model {
     @Lob
     public String content;
     public Date createdDate;
+    public boolean containSolution;
 }
