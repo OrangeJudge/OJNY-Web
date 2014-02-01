@@ -1,4 +1,4 @@
-@(problem: Problem)
+@(problem: Problem, submissions: List[Submit])
 @layout("Problem: " + problem.title, "problems", Seq("/assets/javascripts/submit.min.js"), Seq()){
 <h2>@problem.title</h2>
 
@@ -31,5 +31,13 @@
             </p>
         </div>
     </form>
+</div>
+
+<div id="submissions">
+    <h4>Submissions</h4>
+    @for(submit<- submissions) {
+    <p>Time: @submit.createTime</p>
+    <p>Status: @submit.status (Update: @submit.updateTime)</p>
+    }
 </div>
 }

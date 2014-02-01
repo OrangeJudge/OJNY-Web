@@ -53,7 +53,7 @@ public class MemberController extends Controller {
             if (!member.verifyPassword(in.get("password"))) {
                 throw new OJException(1004, "password incorrect");
             }
-            session("uid", "" + member.id);
+            session("mid", "" + member.id);
             out.put("error", 0);
             out.put("message", "logged in success");
         } catch (OJException e) {
@@ -64,13 +64,13 @@ public class MemberController extends Controller {
     }
 
     public static Result logout() {
-        session().remove("uid");
+        session().remove("mid");
         return redirect("/");
     }
 
     public static Result status() {
         ObjectNode out = Json.newObject();
-        String strid = session("uid");
+        String strid = session("mid");
         if (strid == null) {
             out.put("error", 0);
             out.put("login", false);

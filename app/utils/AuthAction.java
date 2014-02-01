@@ -11,7 +11,7 @@ import static play.mvc.Controller.session;
 
 public class AuthAction extends Action<Authentication> {
     public F.Promise<SimpleResult> call(Http.Context ctx) throws Throwable {
-        String strid = session("uid");
+        String strid = session("mid");
         if (strid == null) {
             if (configuration.json()) {
                 ObjectNode out = Json.newObject();
@@ -22,7 +22,7 @@ public class AuthAction extends Action<Authentication> {
                 return F.Promise.pure((SimpleResult) ok("Not log in"));
             }
         } else {
-            ctx.args.put("uid", Integer.parseInt(strid));
+            ctx.args.put("mid", Integer.parseInt(strid));
             return delegate.call(ctx);
         }
     }

@@ -12,6 +12,7 @@ import play.mvc.Result;
 import utils.Authentication;
 import utils.OJException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProblemController extends Controller {
@@ -24,7 +25,13 @@ public class ProblemController extends Controller {
         if (problem == null) {
             return ok("Problem not found");
         }
-        return ok(views.html.problem.display.render(problem));
+        List<Submit> submits;
+        if (session("mid") != null) {
+            submits = Submit.find.where("member_id = " + session("mid") + " and problem_id = " + problem.id).findList();
+        } else {
+            submits = new ArrayList();
+        }
+        return ok(views.html.problem.display.render(problem, submits));
     }
 
     @Authentication
@@ -36,7 +43,7 @@ public class ProblemController extends Controller {
                 int problemId = Integer.parseInt(in.get("problemId"));
                 Submit submit = new Submit();
                 submit.setProblem(problemId);
-                submit.setMember(Integer.parseInt(session("uid")));
+                submit.setMember(Integer.parseInt(session("mid")));
                 submit.language = Integer.parseInt(in.get("language"));
                 submit.source = in.get("source");
                 submit.save();

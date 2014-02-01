@@ -28,7 +28,7 @@
             <li @if(topNavActive=="home"){class="active"}><a href="/">Home</a></li>
             <li @if(topNavActive=="problems"){class="active"}><a href="/problems">Problems</a></li>
             <li @if(topNavActive=="contests"){class="active"}><a href="/contests">Contests</a></li>
-            @if(session.get("uid") != null){
+            @if(session.get("mid") != null){
             <li @if(topNavActive=="member"){class="active"}><a href="/member">Member</a></li>
             }else{
             <li @if(topNavActive=="member"){class="active"}><a href="/member/login">Log in</a></li>
