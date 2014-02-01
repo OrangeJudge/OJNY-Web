@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import play.db.ebean.Model;
 import utils.OJException;
 
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @Entity
 public class Submit extends Model {
@@ -15,12 +17,23 @@ public class Submit extends Model {
     public int language;
     @Lob
     public String source;
+    @JsonIgnore
     @ManyToOne
     public Problem problem;
+    @JsonIgnore
     @ManyToOne
     public Member member;
     public long problemTimeStamp;
 
+    public Date createTime;
+    public Date finishTime;
+
+    public int status;
+    public String detail;
+
+    public Submit() {
+        createTime = new Date();
+    }
 
     public void setMember(int memberId) throws OJException {
         Member member = Member.find.byId(memberId);
@@ -36,4 +49,13 @@ public class Submit extends Model {
         }
         this.problem = problem;
     }
+
+    public Integer getProblemId() {
+        return problem == null ? null : problem.id;
+    }
+
+    public Long getProblemTimeStamp() {
+        return problem == null ? null : problem.timeStamp;
+    }
+
 }

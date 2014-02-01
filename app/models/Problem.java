@@ -18,7 +18,7 @@ public class Problem extends Model {
     public String description;
     public String tags;
     public String source;
-    public int timeLimit; // in ns. 0 for not specified.
+    public int timeLimit; // in ms. 0 for not specified.
     public int memoryLimit; // in MB. 0 for not specified.
     public boolean specialJudge;
 

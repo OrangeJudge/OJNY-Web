@@ -1,6 +1,9 @@
 package judge;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import models.Submit;
+import play.libs.Json;
+import play.libs.WS;
 
 public class Dispatcher implements Runnable {
     private Submit submit;
@@ -11,11 +14,9 @@ public class Dispatcher implements Runnable {
     public void run() {
         synchronized (Dispatcher.class) {
             System.out.println("start judge");
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            JsonNode postData = Json.toJson(submit);
+            System.out.println(postData);
+            WS.url("http://localhost:1314/submit").post(postData);
             System.out.println("stop judge");
         }
     }
