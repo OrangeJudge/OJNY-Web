@@ -2,6 +2,7 @@ package judge;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Submit;
+import play.libs.F;
 import play.libs.Json;
 import play.libs.WS;
 
@@ -12,12 +13,16 @@ public class Dispatcher implements Runnable {
     }
     @Override
     public void run() {
-        synchronized (Dispatcher.class) {
-            System.out.println("start judge");
-            JsonNode postData = Json.toJson(submit);
-            System.out.println(postData);
-            WS.url("http://localhost:1314/submit").post(postData);
-            System.out.println("stop judge");
-        }
+        System.out.println("start judge");
+        JsonNode postData = Json.toJson(submit);
+        System.out.println(postData);
+        F.Promise<Integer> result = WS.url("http://localhost:1314/submit").post(postData).map(
+            new F.Function<WS.Response, Integer>() {
+                public Integer apply(WS.Response response) {
+                    System.out.println("Error:" + response.asJson().findPath("error"));
+                    return response.asJson().findPath("error").asInt();
+                }
+            });
+        System.out.println("stop judge");
     }
 }

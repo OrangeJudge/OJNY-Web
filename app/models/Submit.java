@@ -26,10 +26,12 @@ public class Submit extends Model {
     public long problemTimeStamp;
 
     public Date createTime;
-    public Date finishTime;
+    public Date updateTime;
 
     public int status;
     public String detail;
+
+    public int judger = 0;
 
     public Submit() {
         createTime = new Date();

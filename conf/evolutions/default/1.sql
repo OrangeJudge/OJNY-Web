@@ -10,6 +10,14 @@ create table admin (
   constraint pk_admin primary key (id))
 ;
 
+create table judger (
+  id                        integer auto_increment not null,
+  address                   varchar(255),
+  available                 tinyint(1) default 0,
+  queue                     integer,
+  constraint pk_judger primary key (id))
+;
+
 create table member (
   id                        integer auto_increment not null,
   username                  varchar(255),
@@ -75,9 +83,10 @@ create table submit (
   member_id                 integer,
   problem_time_stamp        bigint,
   create_time               datetime,
-  finish_time               datetime,
+  update_time               datetime,
   status                    integer,
   detail                    varchar(255),
+  judger                    integer,
   constraint pk_submit primary key (id))
 ;
 
@@ -122,6 +131,8 @@ create index ix_submit_comment_member_12 on submit_comment (member_id);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table admin;
+
+drop table judger;
 
 drop table member;
 
