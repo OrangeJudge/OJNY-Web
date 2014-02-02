@@ -12,6 +12,7 @@ create table admin (
 
 create table judger (
   id                        integer auto_increment not null,
+  nickname                  varchar(255),
   address                   varchar(255),
   available                 tinyint(1) default 0,
   queue                     integer,
@@ -25,6 +26,7 @@ create table member (
   password                  varchar(255),
   gender                    tinyint(1) default 0,
   created_date              datetime,
+  last_login_date           datetime,
   constraint pk_member primary key (id))
 ;
 

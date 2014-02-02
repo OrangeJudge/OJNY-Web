@@ -18,6 +18,7 @@ public class Member extends Model {
     public boolean gender; // female is true.
 
     public Date createdDate;
+    public Date lastLoginDate;
 
     public static Finder<Integer, Member> find = new Finder<Integer, Member>(
             Integer.class, Member.class

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 public class Judger extends Model {
     @Id
     public int id;
+    public String nickname;
     public String address;
     public boolean available;
     public int queue;

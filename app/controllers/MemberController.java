@@ -7,6 +7,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Authentication;
 import utils.OJException;
 
 public class MemberController extends Controller {
@@ -68,26 +69,15 @@ public class MemberController extends Controller {
         return redirect("/");
     }
 
+    @Authentication
     public static Result status() {
         ObjectNode out = Json.newObject();
-        String strid = session("mid");
-        if (strid == null) {
-            out.put("error", 0);
-            out.put("login", false);
-        } else {
-            Member member = Member.find.byId(Integer.parseInt(strid));
-            if (member == null) {
-                out.put("error", 1);
-                out.put("message", "logged in user not found.");
-            } else {
-                out.put("error", 0);
-                out.put("login", true);
-                out.put("member", Json.toJson(member));
-            }
-        }
+        out.put("error", 0);
+        out.put("member", Json.toJson(ctx().args.get("member")));
         return ok(out);
     }
 
+    @Authentication(json = false)
     public static Result profilePage() {
         return ok(views.html.member.profile.render());
     }
