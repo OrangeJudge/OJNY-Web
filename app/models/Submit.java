@@ -31,6 +31,8 @@ public class Submit extends Model {
     public int status;
     public String detail;
 
+    public boolean isPrivate = false;
+
     public int judger = 0;
 
     public Submit() {

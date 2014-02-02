@@ -88,6 +88,7 @@ create table submit (
   update_time               datetime,
   status                    integer,
   detail                    varchar(255),
+  is_private                tinyint(1) default 0,
   judger                    integer,
   constraint pk_submit primary key (id))
 ;

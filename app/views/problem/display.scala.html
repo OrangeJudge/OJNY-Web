@@ -1,4 +1,4 @@
-@(problem: Problem, submissions: List[Submit])
+@(problem: Problem, submissions: List[Submit], description: String)
 @layout("Problem: " + problem.title, "problems",
     Seq("/assets/javascripts/messenger.min.js",
         "/assets/javascripts/messenger-theme-flat.js",
@@ -11,7 +11,7 @@
     <p>Memory limit: @problem.memoryLimit MB</p>
 </div>
 <div id="description">
-    @problem.description
+    @Html(description)
 </div>
 
 <div id="submit">

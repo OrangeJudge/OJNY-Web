@@ -12,6 +12,9 @@ import play.mvc.Result;
 import utils.Authentication;
 import utils.OJException;
 
+import org.markdown4j.Markdown4jProcessor;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +23,28 @@ public class ProblemController extends Controller {
         List<Problem> problems = Problem.find.all();
         return ok(views.html.problem.list.render(problems));
     }
+
     public static Result problemPage(int problemId) {
         Problem problem = Problem.find.byId(problemId);
         if (problem == null) {
             return ok("Problem not found");
         }
+        String description = "";
+        try {
+            description = new Markdown4jProcessor().process(problem.description);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         List<Submit> submits;
         if (session("mid") != null) {
             submits = Submit.find.where("member_id = " + session("mid") + " and problem_id = " + problem.id)
                     .order("id DESC").findList();
         } else {
-            submits = new ArrayList();
+            submits = new ArrayList<>();
         }
-        return ok(views.html.problem.display.render(problem, submits));
+
+        return ok(views.html.problem.display.render(problem, submits, description));
     }
 
     @Authentication
