@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import models.Judger;
 import models.Submit;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,6 +24,13 @@ public class JudgerController extends Controller {
                 submit.detail = in.get("detail");
                 submit.updateTime = new Date();
                 submit.save();
+                if (submit.status >= 200) {
+                    synchronized (Judger.class) {
+                        Judger judger = Judger.find.byId(1);
+                        judger.queue -= 1;
+                        judger.save();
+                    }
+                }
             } catch (NullPointerException npe) {
                 throw new OJException(1, "Null Pointer Exception");
             }

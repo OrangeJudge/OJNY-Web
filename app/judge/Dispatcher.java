@@ -1,6 +1,7 @@
 package judge;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.Judger;
 import models.Submit;
 import play.libs.F;
 import play.libs.Json;
@@ -13,17 +14,27 @@ public class Dispatcher implements Runnable {
     }
     @Override
     public void run() {
-        System.out.println("start judge");
-        JsonNode postData = Json.toJson(submit);
-        System.out.println(postData);
-        F.Promise<Integer> promiseOfError = WS.url("http://localhost:1314/submit").post(postData).map(
-            new F.Function<WS.Response, Integer>() {
-                public Integer apply(WS.Response response) {
-                    return response.asJson().findPath("error").asInt();
+        synchronized (Dispatcher.this) {
+            System.out.println("start judge");
+            Judger judger = Judger.find.byId(1);
+            JsonNode postData = Json.toJson(submit);
+            System.out.println(postData);
+            F.Promise<Integer> promiseOfError = WS.url(judger.address + "/submit").post(postData).map(
+                    new F.Function<WS.Response, Integer>() {
+                        public Integer apply(WS.Response response) {
+                            return response.asJson().findPath("error").asInt();
+                        }
+                    });
+            Integer error = promiseOfError.get();
+            System.out.println("Error:" + error);
+            if (error == 0) {
+                synchronized (Judger.class) {
+                    judger.refresh();
+                    judger.queue += 1;
+                    judger.save();
                 }
-            });
-        Integer error = promiseOfError.get();
-        System.out.println("Error:" + error);
-        System.out.println("stop judge");
+            }
+            System.out.println("stop judge");
+        }
     }
 }

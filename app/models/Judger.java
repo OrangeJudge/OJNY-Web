@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Judger {
+public class Judger extends Model {
     @Id
     public int id;
     public String address;
