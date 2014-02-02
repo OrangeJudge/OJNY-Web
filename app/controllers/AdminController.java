@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import models.Judger;
 import models.Problem;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -82,6 +83,11 @@ public class AdminController extends Controller {
         ObjectNode out = Json.newObject();
         out.put("error", 0);
         return ok(out);
+    }
+
+    public static Result judgersPage() {
+        List<Judger> judgers = Judger.find.all();
+        return ok(views.html.admin.judgers.render(judgers));
     }
 
 }

@@ -17,10 +17,15 @@ POST    /member/login               controllers.MemberController.login()
 GET     /member/logout              controllers.MemberController.logout()
 GET     /member/status              controllers.MemberController.status()
 
+GET     /member                     controllers.MemberController.profilePage()
+
 # Problem
 GET     /problems                   controllers.ProblemController.problemsPage()
 GET     /problem/:id                controllers.ProblemController.problemPage(id: Int)
 POST    /submit                     controllers.ProblemController.submit()
+
+# Contest
+GET     /contests                   controllers.PortalController.contestsPage()
 
 # Judger API
 POST    /judger/updateSubmit        controllers.JudgerController.updateSubmit()
@@ -36,3 +41,5 @@ GET     /admin/problem/add          controllers.AdminController.addProblemPage()
 POST    /admin/problem/add          controllers.AdminController.addProblem()
 GET     /admin/problem/:id          controllers.AdminController.editProblemPage(id: Int)
 POST    /admin/problem/:id/edit     controllers.AdminController.editProblem(id: Int)
+
+GET     /admin/judgers              controllers.AdminController.judgersPage()

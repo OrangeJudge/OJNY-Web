@@ -10,5 +10,8 @@ public class PortalController extends Controller {
         return ok(index.render());
     }
 
+    public static Result contestsPage() {
+        return ok(views.html.contest.index.render());
+    }
 
 }

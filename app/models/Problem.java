@@ -2,11 +2,9 @@ package models;
 
 import play.db.ebean.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Problem extends Model {
@@ -31,6 +29,9 @@ public class Problem extends Model {
 
     public double difficulty;
     public int vote;
+
+    @OneToMany(mappedBy = "problem")
+    public List<Submit> submitList;
 
     public static Finder<Integer, Problem> find = new Finder<Integer, Problem>(
             Integer.class, Problem.class

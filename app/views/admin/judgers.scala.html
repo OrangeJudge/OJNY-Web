@@ -1,0 +1,16 @@
+@(judgers: List[Judger])
+
+@adminLayout("Judgers", "judgers", Seq(), Seq()){
+<h1>Judgers</h1>
+
+@for(judger <- judgers){
+    <div>
+        <p>ID: @judger.id</p>
+        <p>Address: @judger.address</p>
+        <p>Available: @judger.available</p>
+        <p>Queue: @judger.queue</p>
+    </div>
+}
+
+
+}

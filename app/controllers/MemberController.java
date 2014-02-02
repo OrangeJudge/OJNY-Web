@@ -87,4 +87,8 @@ public class MemberController extends Controller {
         }
         return ok(out);
     }
+
+    public static Result profilePage() {
+        return ok(views.html.member.profile.render());
+    }
 }
