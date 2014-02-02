@@ -27,6 +27,9 @@ public class Problem extends Model {
     public Member author;
     public int status; // 0 normal; 1 view only; 2 deleted;
 
+    public int submitCount;
+    public int passCount;
+    public double passRatio;
     public double difficulty;
     public int vote;
 

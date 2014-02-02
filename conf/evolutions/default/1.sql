@@ -44,6 +44,9 @@ create table problem (
   time_stamp                bigint,
   author_id                 integer,
   status                    integer,
+  submit_count              integer,
+  pass_count                integer,
+  pass_ratio                double,
   difficulty                double,
   vote                      integer,
   constraint pk_problem primary key (id))

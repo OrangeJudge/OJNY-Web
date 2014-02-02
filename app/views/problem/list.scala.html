@@ -1,12 +1,28 @@
 @(problems: List[Problem])
 
 @layout("Problems", "problems", Seq(), Seq()){
-<h2>Problems</h2>
-<ul id="problem-list">
+<table id="problem-list">
+    <thead>
+    <tr>
+        <td>#</td>
+        <td>Title</td>
+        <td>Submit</td>
+        <td>Pass</td>
+        <td>Difficulty</td>
+    </tr>
+    </thead>
+    <tbody>
     @for(problem <- problems) {
-    <li>
-        <a href="/problem/@problem.id">@problem.title</a>
-    </li>
+    <tr>
+        <td>@problem.id</td>
+        <td><a href="/problem/@problem.id">@problem.title</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
     }
-</ul>
+    </tbody>
+</table>
+
 }
