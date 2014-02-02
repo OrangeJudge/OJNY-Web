@@ -12,6 +12,8 @@ displayMessage = (content, type) ->
     message: content
     type: type
 
+target = ""
+
 successHandler = (ret) ->
   msg.hide()
   error = 0
@@ -27,6 +29,9 @@ successHandler = (ret) ->
     displayMessage(errorMsg, "error")
   else
     displayMessage("Success", "success")
+    setTimeout ( ->
+      window.location = target
+    ), 700
 
 errorHandler = ->
   displayMessage(
@@ -35,6 +40,7 @@ errorHandler = ->
   )
 
 $("#login-form").submit ->
+  target = "/"
   displayMessage(
     "Sending login request.",
     "info"
@@ -48,6 +54,7 @@ $("#login-form").submit ->
   return false
 
 $("#register-form").submit ->
+  target = "/member/login"
   if $("#gender").val() == null || $("#gender").val() == "-1"
     displayMessage("Please select your gender.", "error")
     return false

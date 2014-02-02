@@ -1,5 +1,9 @@
 @(problem: Problem, submissions: List[Submit])
-@layout("Problem: " + problem.title, "problems", Seq("/assets/javascripts/submit.min.js"), Seq()){
+@layout("Problem: " + problem.title, "problems",
+    Seq("/assets/javascripts/messenger.min.js",
+        "/assets/javascripts/messenger-theme-flat.js",
+        "/assets/javascripts/submit.min.js"),
+    Seq("/assets/stylesheets/messenger.css", "/assets/stylesheets/messenger-theme-flat.css")){
 <h2>@problem.title</h2>
 
 <div id="basic-info">
@@ -27,7 +31,7 @@
                 <textarea id="source" name="source"></textarea>
             </p>
             <p>
-                <input type="submit" value="Submit">
+                <input id="submit-button" type="submit" value="Submit">
             </p>
         </div>
     </form>

@@ -27,7 +27,8 @@ public class ProblemController extends Controller {
         }
         List<Submit> submits;
         if (session("mid") != null) {
-            submits = Submit.find.where("member_id = " + session("mid") + " and problem_id = " + problem.id).findList();
+            submits = Submit.find.where("member_id = " + session("mid") + " and problem_id = " + problem.id)
+                    .order("id DESC").findList();
         } else {
             submits = new ArrayList();
         }
