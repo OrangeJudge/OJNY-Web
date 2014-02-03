@@ -30,6 +30,7 @@ public class Problem extends Model {
     public int submitCount;
     public int passCount;
     public double passRatio;
+    public int solvedCount;
     public double difficulty;
     public int vote;
 

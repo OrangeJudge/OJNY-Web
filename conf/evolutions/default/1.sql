@@ -47,6 +47,7 @@ create table problem (
   submit_count              integer,
   pass_count                integer,
   pass_ratio                double,
+  solved_count              integer,
   difficulty                double,
   vote                      integer,
   constraint pk_problem primary key (id))
