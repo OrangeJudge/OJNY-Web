@@ -48,6 +48,8 @@ create table problem (
   pass_count                integer,
   pass_ratio                double,
   solved_count              integer,
+  attempt_count             integer,
+  attempt_ratio             double,
   difficulty                double,
   vote                      integer,
   constraint pk_problem primary key (id))
